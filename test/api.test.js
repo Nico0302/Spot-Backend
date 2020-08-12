@@ -2,24 +2,24 @@ const request = require('supertest');
 
 const app = require('../src/app');
 
-describe('GET /api/v1', () => {
+describe('POST /api/v1/provider/request', () => {
   it('responds with a json message', (done) => {
     request(app)
-      .get('/api/v1')
+      .post('/api/v1/provider/request')
+      .send({ provider: 'microsoft', school: 'Hill Valley High School' })
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
-      .expect(200, {
-        message: 'API - 👋🌎🌍🌏'
-      }, done);
+      .expect(200, { message: 'Provider request send' }, done);
   });
 });
 
-describe('GET /api/v1/emojis', () => {
-  it('responds with a json message', (done) => {
+describe('POST /api/v1/provider/request', () => {
+  it('responds with an error message', (done) => {
     request(app)
-      .get('/api/v1/emojis')
+      .post('/api/v1/provider/request')
+      .send({ provider: 'microsoft' })
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
-      .expect(200, ['😀', '😳', '🙄'], done);
+      .expect(400, done);
   });
 });

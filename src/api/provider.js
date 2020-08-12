@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post('/request', async (req, res, next) => {
     const { school, provider } = req.body;
-    console.log(req.body);
+
     if (!school) {
         res.status(400);
         const error = new Error('Required body parameter missing');
