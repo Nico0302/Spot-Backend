@@ -21,8 +21,7 @@ function errorHandler(err, req, res, next) {
         code: err.code,
         stack: err.stack
       }
-  }
-  );
+  });
 }
 
 module.exports = {
