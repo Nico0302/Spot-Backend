@@ -7,12 +7,18 @@
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "lint": "eslint --fix src",
-    "test": "mocha --exit"
+    "test": "mocha --exit",
+    "elasticDev": "docker run -p 9200:9200 -p 9300:9300 -e \"discovery.type=single-node\" docker.elastic.co/elasticsearch/elasticsearch:7.0.1",
+    "elasticSetup": "node scripts/elasticSetup.js"
+  },
+  "repository": {
+    "url": "https://github.com/Nico0302/Spot-Backend.git"
   },
   "keywords": [],
   "author": "Nicolas Gres <nicolas@gres.io> (https://www.gres.io)",
   "license": "MIT",
   "dependencies": {
+    "@elastic/elasticsearch": "^7.9.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
