@@ -32,4 +32,5 @@ npm run dev
 
 1. Create an .env file with ``` NODE_ENV=production ```
 2. ``` docker-compose up -d ```
-3. Setup an reverse proxy (Nginx) to port *5000* and secure it with ssl
+3. ``` docker exec -it spot_backend npm run elasticSetup ```
+4. Setup a reverse proxy (Nginx/Traefik) to port *5000* and secure it with ssl

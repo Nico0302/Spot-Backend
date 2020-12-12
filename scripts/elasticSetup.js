@@ -1,7 +1,8 @@
 const { Client } = require('@elastic/elasticsearch');
 const fs = require('fs');
+const { getElasticClient } = require('../src/services/search');
 
-const client = new Client({ node: 'http://localhost:9200' });
+const client = getElasticClient();
 
 function importSchools() {
     fs.readFile(process.env.SCHOOLS_FILE_PATH ||'./schools.json', 'utf8', async (error, data) => {

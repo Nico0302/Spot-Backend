@@ -3,10 +3,13 @@ services:
   app:
     build: .
     container_name: spot_backend
-    volumes:
-      - ./schools.json:${SCHOOLS_FILE_PATH}:ro
     env_file:
       - .env
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.spot.rule=Host(`${HOST}`)
+      - traefik.http.routers.spot.entrypoints=websecure
+      - traefik.http.services.spot.loadbalancer.server.port=5000
   es01:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.0.1
     container_name: es01
